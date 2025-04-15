@@ -106,7 +106,7 @@
                     title: "Are you sure?",
                     text: "Do you want to delete this record?",
                     type: "warning",
-                    buttons: ["No", "Yes"],                    
+                    showCancelButton: true,                    
                     confirmButtonColor: '#dc3545'
                 }).then(function (result) {
                     if (result) {
