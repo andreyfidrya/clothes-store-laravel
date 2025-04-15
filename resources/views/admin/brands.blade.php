@@ -71,10 +71,12 @@
                                                                         <i class="icon-edit-3"></i>
                                                                     </div>
                                                                 </a>
-                                                                <form action="#" method="POST">
-                                                                    <div class="item text-danger delete">
+                                                                <form action="{{route('admin.brand.delete',['id'=>$brand->id])}}" method="POST">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button class="item text-danger delete">
                                                                         <i class="icon-trash-2"></i>
-                                                                    </div>
+                                                                    </button>
                                                                 </form>
                                                             </div>
                                                         </td>
@@ -93,3 +95,26 @@
                         </div>
 
 @endsection
+
+@push('scripts')
+<script>       
+        $(function(){
+            $(".delete").on('click',function(e){
+                e.preventDefault();
+                var selectedForm = $(this).closest('form');
+                swal({
+                    title: "Are you sure?",
+                    text: "Do you want to delete this record?",
+                    type: "warning",
+                    buttons: ["No", "Yes"],                    
+                    confirmButtonColor: '#dc3545'
+                }).then(function (result) {
+                    if (result) {
+                        selectedForm.submit();  
+                    }
+                });                             
+            });
+        });
+    </script>
+
+@endpush
