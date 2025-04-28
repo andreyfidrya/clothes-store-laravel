@@ -70,7 +70,7 @@
                                                     </td>
                                                     <td>${{$product->regular_price}}</td>
                                                     <td>${{$product->sale_price}}</td>
-                                                    <td>{{$product->sku}}</td>
+                                                    <td>{{$product->SKU}}</td>
                                                     <td>{{$product->category->name}}</td>
                                                     <td>{{$product->brand->name}}</td>
                                                     <td>{{$product->featured == 0 ? "No":"Yes"}}</td>
