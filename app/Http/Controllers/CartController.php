@@ -105,4 +105,12 @@ class CartController extends Controller
         
     }
 
+    public function remove_coupon_code()
+    {
+        Session::forget('coupon');
+        Session::forget('discounts');
+        return back()->with('success', 'Coupon has been removed!');
+    }
+
+
 }
