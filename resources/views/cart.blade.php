@@ -121,7 +121,6 @@
                 <input class="btn-link fw-medium position-absolute top-0 end-0 h-100 px-4" type="submit" value="REMOVE COUPON">
               </form>
             @endif
-
             <form action="{{route('cart.empty')}}" method="POST">
               @csrf
               @method('DELETE')
@@ -141,7 +140,6 @@
             <div class="shopping-cart__totals">
               <h3>Cart Totals</h3>
               @if(Session::has('discounts'))
-
               <table class="cart-totals">
                 <tbody>
                   <tr>
@@ -196,7 +194,7 @@
             </div>
             <div class="mobile_fixed-btn_wrapper">
               <div class="button-wrapper container">
-                <a href="checkout.html" class="btn btn-primary btn-checkout">PROCEED TO CHECKOUT</a>
+                <a href="{{route('cart.checkout')}}" class="btn btn-primary btn-checkout">PROCEED TO CHECKOUT</a>
               </div>
             </div>
           </div>

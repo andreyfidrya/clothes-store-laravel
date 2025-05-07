@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 Use App\Models\Coupon;
+Use App\Models\Address;
 Use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Surfsidemedia\Shoppingcart\Facades\Cart;
+
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -112,5 +115,14 @@ class CartController extends Controller
         return back()->with('success', 'Coupon has been removed!');
     }
 
+    public function checkout()
+    {
+        if(!Auth::check())
+        {
+            return redirect()->route('login');
+        }
 
+        $address = Address::where('user_id',Auth::user()->id)->where('isdefault',1)->first();
+        return view('checkout',compact('address'));
+    }
 }
