@@ -186,7 +186,7 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <div class="select"> 
-                                                <select id="order_status" name="order_status">
+                                                    <select id="order_status" name="order_status">
                                                     <option value="ordered" {{$order->status == 'ordered' ? "selected":""}}>Ordered</option>
                                                     <option value="delivered" {{$order->status == 'delivered' ? "selected":""}}>Delivered</option>
                                                     <option value="canceled" {{$order->status == 'canceled' ? "selected":""}}>Canceled</option>
