@@ -163,7 +163,7 @@ class CartController extends Controller
             $address->address = $request->address;
             $address->locality = $request->locality;
             $address->landmark = $request->landmark; 
-            $address->country = 'India';
+            $address->country = 'Ukraine';
             $address->user_id = $user_id;
             $address->isdefault = true;
             $address->save();   
