@@ -55,8 +55,8 @@ class AdminController extends Controller
         $totalAmount = collect($monthlyDatas)->sum('TotalAmount');
         $totalOrderedAmount = collect($monthlyDatas)->sum('TotalOrderedAmount');
         $totalDeliveredAmount = collect($monthlyDatas)->sum('TotalDeliveredAmount');
-        $totalCanceledAmount = collect($monthlyDatas)->sum('TotalCanceledAmount');        
-
+        $totalCanceledAmount = collect($monthlyDatas)->sum('TotalCanceledAmount'); 
+        
         return view('admin.index', compact('orders','dashboardDatas','AmountM','OrderedAmountM','DeliveredAmountM','CanceledAmountM','totalAmount','totalOrderedAmount','totalDeliveredAmount','totalCanceledAmount'));
     }
 
