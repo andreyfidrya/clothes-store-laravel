@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\User;
 Use App\Models\OrderItem;
 Use App\Models\Transaction;
 use Carbon\Carbon;
@@ -20,7 +21,30 @@ class UserController extends Controller
 
     public function account_details()
     {
-        return view('user.account-details');
+        $user_id = Auth::user()->id;
+        $user = User::find($user_id);
+        
+        return view('user.account-details',compact('user'));
+    }
+
+    public function account_details_update(Request $request)
+    {
+        $request->validate([ 
+            'name' => 'required',
+            'mobile' => 'required',
+            'email' => 'required',
+            'current_password' => 'required|current_password'
+        ]);
+
+        $user_id = Auth::user()->id;
+        $user = User::find($user_id);
+
+        $user->name = $request->name;
+        $user->mobile = $request->mobile;
+        $user->email = $request->email;
+        $user->save();
+
+        return redirect()->route('user.account.details')->with('status','User details have been updated successfully');
     }
 
     public function account_security()

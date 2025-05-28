@@ -46,8 +46,9 @@ Route::get('/search',[HomeController::class,'search'])->name('home.search');
 Route::middleware(['auth'])->group(function(){
     Route::get('/account-dashboard', [UserController::class, 'index'])->name('user.index');
     Route::get('/account-details', [UserController::class, 'account_details'])->name('user.account.details');
+    Route::put('/account-details/update', [UserController::class, 'account_details_update'])->name('user.account.details.update');
     Route::get('/account-security', [UserController::class, 'account_security'])->name('user.account.security');
-    Route::get('/account-security/update', [UserController::class, 'account_security_update'])->name('user.account.security.update');
+    Route::put('/account-security/update', [UserController::class, 'account_security_update'])->name('user.account.security.update');
     Route::get('/account-orders',[UserController::class, 'orders'])->name('user.orders');
     Route::get('/account-order/{order_id}/details',[UserController::class, 'order_details'])->name('user.order.details');
     Route::put('/account-order/cancel-order',[UserController::class,'order_cancel'])->name('user.order.cancel');    
