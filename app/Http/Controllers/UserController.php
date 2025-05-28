@@ -8,12 +8,39 @@ Use App\Models\Transaction;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     public function index()
     {
         return view('user.index');
+    }
+
+    public function account_details()
+    {
+        return view('user.account-details');
+    }
+
+    public function account_security()
+    {
+        return view('user.account-security');
+    }
+
+    public function account_security_update(Request $request)
+    {
+        $request->validate([
+            'old_password' => 'required|current_password',
+            'new_password' => ['required','confirmed', Rules\Password::defaults()],
+            'new_password_confirmation' => 'required'           
+        ]);
+
+        $request->user()->forceFill([
+            'password' => Hash::make($request->new_password)            
+        ])->save();
+
+        return redirect()->route('user.account.security')->with('status','Password has been changed successfully');
     }
 
     public function orders()
