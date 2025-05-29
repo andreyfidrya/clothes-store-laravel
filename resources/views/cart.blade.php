@@ -157,11 +157,7 @@
                   <tr>
                     <th>Shipping</th>
                     <td>Free</td>
-                  </tr>
-                  <tr>
-                    <th>VAT</th>
-                    <td>${{Session::get('discounts')['tax']}}</td>
-                  </tr>
+                  </tr>                  
                   <tr>
                     <th>Total</th>
                     <td>${{Session::get('discounts')['total']}}</td>
@@ -179,11 +175,7 @@
                   <tr>
                     <th>Shipping</th>
                     <td>Free</td>
-                  </tr>
-                  <tr>
-                    <th>VAT</th>
-                    <td>${{Cart::instance('cart')->tax()}}</td>
-                  </tr>
+                  </tr>                  
                   <tr>
                     <th>Total</th>
                     <td>${{Cart::instance('cart')->total()}}</td>

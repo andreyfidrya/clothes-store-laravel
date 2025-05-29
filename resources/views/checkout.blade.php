@@ -126,7 +126,7 @@
                   <thead>
                     <tr>
                       <th>PRODUCT</th>
-                      <th align="right">SUBTOTAL</th>
+                      <th align="right">AMOUNT</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -181,11 +181,7 @@
                     <tr>
                       <th>SHIPPING</th>
                       <td class="text-right">Free shipping</td>
-                    </tr>
-                    <tr>
-                      <th>VAT</th>
-                      <td class="text-right">${{Cart::instance('cart')->tax()}}</td>
-                    </tr>
+                    </tr>                    
                     <tr>
                       <th>TOTAL</th>
                       <td class="text-right">${{Cart::instance('cart')->total()}}</td>
