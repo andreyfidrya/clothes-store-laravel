@@ -51,10 +51,8 @@
                                 <tr>
                                     <th style="width: 80px">OrderNo</th>
                                     <th>Name</th>
-                                    <th class="text-center">Phone</th>
-                                    <th class="text-center">Subtotal</th>                                    
-                                    <th class="text-center">Total</th>
-                                    
+                                    <th class="text-center">Phone</th>                                                                        
+                                    <th class="text-center">Total</th>                                    
                                     <th class="text-center">Status</th>
                                     <th class="text-center">Order Date</th>
                                     <th class="text-center">Items</th>
@@ -67,8 +65,7 @@
                                 <tr>
                                     <td class="text-center">{{$order->id}}</td>  
                                     <td class="text-center">{{$order->name}}</td>
-                                    <td class="text-center">{{$order->phone}}</td>
-                                    <td class="text-center">${{$order->subtotal}}</td>                                    
+                                    <td class="text-center">{{$order->phone}}</td>                                                                        
                                     <td class="text-center">${{$order->total}}</td>                                    
                                     <td class="text-center">
                                         @if($order->status == 'delivered')
