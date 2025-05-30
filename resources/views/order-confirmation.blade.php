@@ -63,7 +63,7 @@
               <thead>
                 <tr>
                   <th>PRODUCT</th>
-                  <th>SUBTOTAL</th>
+                  <th>AMOUNT</th>
                 </tr>
               </thead>
               <tbody>
