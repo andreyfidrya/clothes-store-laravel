@@ -252,7 +252,7 @@ class AdminController extends Controller
             'short_description' => 'required',
             'description' => 'required',
             'regular_price' => 'required',
-            'sale_price' => 'required',
+            //'sale_price' => 'required',
             'SKU' => 'required',                
             'stock_status' => 'required',
             'featured' => 'required',
@@ -290,14 +290,18 @@ class AdminController extends Controller
         $gallery_images = "";
         $counter = 1;
 
+        //dd($request->hasFile('images'));
+
         if($request->hasFile('images'))
         {
             $allowedfileextention = ['jpg', 'png', 'jpeg'];
             $files = $request->file('images');
+            // dd($files);
             foreach($files as $file)
             {
                 $gextension = $file->getClientOriginalExtension();
                 $gcheck = in_array($gextension,$allowedfileextention);
+
                 if($gcheck)
                 {
                     $gfileName = $current_timestamp . '-' . $counter . '.' . $gextension;
@@ -306,8 +310,10 @@ class AdminController extends Controller
                     $counter = $counter + 1; 
                 }
             }
-            $gallery_images = implode(',',$gallery_arr);
+
+            $gallery_images = implode(',',$gallery_arr);                        
         }
+        
         $product->images = $gallery_images;
         $product->save();
         return redirect()->route('admin.products')->with('status', 'Product has been added successfully!'); 
@@ -346,7 +352,7 @@ class AdminController extends Controller
             'short_description' => 'required',
             'description' => 'required',
             'regular_price' => 'required',
-            'sale_price' => 'required',
+            //'sale_price' => 'required',
             'SKU' => 'required',                
             'stock_status' => 'required',
             'featured' => 'required',
@@ -389,7 +395,7 @@ class AdminController extends Controller
         }
 
         $gallery_arr = array();
-        $gallery_images = "";
+        $gallery_images = [];
         $counter = 1;
 
         if($request->hasFile('images'))

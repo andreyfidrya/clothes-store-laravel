@@ -150,8 +150,7 @@
                                             </fieldset>
                                             @error('regular_price') <span class="alert alert-danger text-center">{{$message}} </span> @enderror
                                             <fieldset class="name">
-                                                <div class="body-title mb-10">Sale Price <span
-                                                        class="tf-color-1">*</span></div>
+                                                <div class="body-title mb-10">Sale Price </div>
                                                 <input class="mb-10" type="text" placeholder="Enter sale price" name="sale_price" tabindex="0" value="{{$product->sale_price}}" aria-required="true" required="">
                                             </fieldset>
                                             @error('sale_price') <span class="alert alert-danger text-center">{{$message}} </span> @enderror

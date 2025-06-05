@@ -29,7 +29,7 @@
                                     </ul>
                                 </div>
                                 <!-- form-add-product -->
-                                <form class="tf-section-2 form-add-product" method="POST" enctype="multipart/form-data" action="{{route('admin.product.store')}}">
+                                <form action="{{route('admin.product.store')}}" class="tf-section-2 form-add-product" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="wg-box">
                                         <fieldset class="name">
@@ -116,18 +116,14 @@
 
                                         <fieldset>
                                             <div class="body-title mb-10">Upload Gallery Images</div>
-                                            <div class="upload-image mb-16">
-                                                <!-- <div class="item">
-                                <img src="images/upload/upload-1.png" alt="">
-                            </div>                                                 -->
+                                            <div class="upload-image mb-16">                                                                                                
                                                 <div id="galUpload" class="item up-load">
                                                     <label class="uploadfile" for="gFile">
                                                         <span class="icon">
                                                             <i class="icon-upload-cloud"></i>
                                                         </span>
-                                                        <span class="text-tiny">Drop your images here or select <span
-                                                                class="tf-color">click to browse</span></span>
-                                                        <input type="file" id="gFile" name="images[]" accept="image/*" multiple="">
+                                                        <span class="text-tiny">Drop your images here or select <span class="tf-color">click to browse</span></span>
+                                                        <input type="file" id="gFile" name="images[]" multiple accept="image/*">
                                                     </label>
                                                 </div>
                                             </div>
@@ -142,8 +138,7 @@
                                             </fieldset>
                                             @error('regular_price') <span class="alert alert-danger text-center">{{$message}} </span> @enderror
                                             <fieldset class="name">
-                                                <div class="body-title mb-10">Sale Price <span
-                                                        class="tf-color-1">*</span></div>
+                                                <div class="body-title mb-10">Sale Price </div>
                                                 <input class="mb-10" type="text" placeholder="Enter sale price" name="sale_price" tabindex="0" value="{{old('sale_price')}}" aria-required="true" required="">
                                             </fieldset>
                                             @error('sale_price') <span class="alert alert-danger text-center">{{$message}} </span> @enderror
@@ -214,11 +209,11 @@
 
             $("#gFile").on("change",function(e){
                 const photoInp = $("#gFile");
-                const gphotos = this.files;
+                const gphotos = this.files; 
+                console.log("Выбрано файлов:", gphotos.length);               
                 $.each(gphotos,function(key,val){
-                    $("#galUpload").prepend(`<div class="item gitems"><img src="${URL.createObjectURL(val)}" /></div>`);
-                });
-                
+                    $("#galUpload").prepend(`<div class="item gitems"><img src="${URL.createObjectURL(val)}" /></div>`);                    
+                });                                
             });
 
 
@@ -235,5 +230,4 @@
             .replace(/ +/g,"-");
         }
     </script>
-
 @endpush

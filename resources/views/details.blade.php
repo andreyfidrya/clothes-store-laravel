@@ -47,8 +47,7 @@
             </div>
             <div class="product-single__thumbnail">
               <div class="swiper-container">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide product-single__image-item"><img loading="lazy" class="h-auto" src="{{asset('uploads/products/thumbnails')}}/{{$product->image}}" width="104" height="104" alt="" /></div>
+                <div class="swiper-wrapper">                  
                   @foreach(explode(',',$product->images) as $gimg)
                   <div class="swiper-slide product-single__image-item"><img loading="lazy" class="h-auto" src="{{asset('uploads/products/thumbnails')}}/{{$gimg}}" width="104" height="104" alt="" /></div>                  
                   @endforeach
