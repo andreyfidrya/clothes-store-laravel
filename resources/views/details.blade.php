@@ -13,16 +13,7 @@
           <div class="product-single__media" data-media-type="vertical-thumbnail">
             <div class="product-single__image">
               <div class="swiper-container">
-                <div class="swiper-wrapper">
-
-                  <div class="swiper-slide product-single__image-item">
-                    <img loading="lazy" class="h-auto" src="{{asset('uploads/products')}}/{{$product->image}}" width="674" height="674" alt="" />
-                    <a data-fancybox="gallery" href="{{asset('uploads/products')}}/{{$product->image}}" data-bs-toggle="tooltip" data-bs-placement="left" title="Zoom">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <use href="#icon_zoom" />
-                      </svg>
-                    </a>
-                  </div>
+                <div class="swiper-wrapper">                  
 
                   @foreach(explode(',',$product->images) as $gimg)                  
                   <div class="swiper-slide product-single__image-item">
@@ -46,7 +37,7 @@
               </div>
             </div>
             <div class="product-single__thumbnail">
-              <div class="swiper-container">
+              <div class="swiper-container">                
                 <div class="swiper-wrapper">                  
                   @foreach(explode(',',$product->images) as $gimg)
                   <div class="swiper-slide product-single__image-item"><img loading="lazy" class="h-auto" src="{{asset('uploads/products/thumbnails')}}/{{$gimg}}" width="104" height="104" alt="" /></div>                  

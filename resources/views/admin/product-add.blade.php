@@ -207,15 +207,37 @@
                 }
             });
 
-            $("#gFile").on("change",function(e){
+            let allFiles = [];
+
+            /*$("#gFile").on("change",function(e){
                 const photoInp = $("#gFile");
-                const gphotos = this.files; 
-                console.log("Выбрано файлов:", gphotos.length);               
+                const gphotos = this.files;                                
                 $.each(gphotos,function(key,val){
                     $("#galUpload").prepend(`<div class="item gitems"><img src="${URL.createObjectURL(val)}" /></div>`);                    
                 });                                
+            });*/
+
+            $("#gFile").on("change", function (e) {
+            const newFiles = Array.from(this.files);
+
+            // Add new files to the array
+            allFiles = allFiles.concat(newFiles);
+
+            // Remove existing previews to prevent duplication
+            $(".gitems").remove();
+
+            // Show previews
+            allFiles.forEach(function (file, index) {
+                $("#galUpload").prepend(
+                    `<div class="item gitems"><img src="${URL.createObjectURL(file)}" /></div>`
+                );
             });
 
+            // Manually create a new DataTransfer object to update input
+            const dataTransfer = new DataTransfer();
+            allFiles.forEach(file => dataTransfer.items.add(file));
+            document.getElementById('gFile').files = dataTransfer.files;
+            });
 
             $("input[name='name']").on("change",function(){
                 $("input[name='slug']").val(StringToSlug($(this).val())); 
