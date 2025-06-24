@@ -51,7 +51,9 @@ Route::middleware(['auth'])->group(function(){
     Route::put('/account-security/update', [UserController::class, 'account_security_update'])->name('user.account.security.update');
     Route::get('/account-orders',[UserController::class, 'orders'])->name('user.orders');
     Route::get('/account-order/{order_id}/details',[UserController::class, 'order_details'])->name('user.order.details');
-    Route::put('/account-order/cancel-order',[UserController::class,'order_cancel'])->name('user.order.cancel');    
+    Route::put('/account-order/cancel-order',[UserController::class,'order_cancel'])->name('user.order.cancel'); 
+    Route::get('/account-address', [UserController::class, 'account_address'])->name('user.account.address');
+    Route::get('/account-address-add', [UserController::class, 'account_address_add'])->name('user.account.address.add');   
 });
 
 

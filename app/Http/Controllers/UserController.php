@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\User;
+use App\Models\Address;
 Use App\Models\OrderItem;
 Use App\Models\Transaction;
 use Carbon\Carbon;
@@ -94,5 +95,17 @@ class UserController extends Controller
         $order->canceled_date = Carbon::now();
         $order->save();
         return back()->with('status',"Order has been canceled successfully!");
+    }
+
+    public function account_address()
+    {
+        $addresses = Address::where('user_id',Auth::user()->id)->get();
+        
+        return view('user.account-address',compact('addresses'));
+    }
+
+    public function account_address_add()
+    {
+        return view('user.account-address-add');
     }
 }
