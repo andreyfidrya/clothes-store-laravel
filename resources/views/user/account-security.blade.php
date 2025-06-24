@@ -18,12 +18,12 @@
             @endif           
             <form name="account_edit_form" action="{{route('user.account.security.update')}}" method="PUT" class="needs-validation" novalidate="">
                 <div class="row">
-                  <div class="col-md-12">
+                  <div class="col-md-7">
                     <div class="my-3">
                       <h5 class="text-uppercase mb-0">Password Change</h5>
                     </div>
                   </div>
-                  <div class="col-md-12">
+                  <div class="col-md-7">
                     <div class="form-floating my-3">
                       <input type="password" class="form-control" id="old_password" name="old_password"
                         placeholder="Old password" required="">
@@ -31,7 +31,7 @@
                     </div>                  
                   </div>
                   @error('old_password') <span class="alert alert-danger text-center">{{$message}} </span> @enderror  
-                  <div class="col-md-12">
+                  <div class="col-md-7">
                     <div class="form-floating my-3">
                       <input type="password" class="form-control" id="new_password" name="new_password"
                         placeholder="New password" required="">
@@ -39,7 +39,7 @@
                     </div>
                   </div>
                   @error('new_password') <span class="alert alert-danger text-center">{{$message}} </span> @enderror
-                  <div class="col-md-12">
+                  <div class="col-md-7">
                     <div class="form-floating my-3">
                       <input type="password" class="form-control" cfpwd="" data-cf-pwd="#new_password"
                         id="new_password_confirmation" name="new_password_confirmation"
@@ -49,7 +49,7 @@
                     </div>
                   </div>
                   @error('new_password_confirmation') <span class="alert alert-danger text-center">{{$message}} </span> @enderror
-                  <div class="col-md-12">
+                  <div class="col-md-7">
                         <div class="my-3">
                         <button type="submit" class="btn btn-primary">Save Changes</button>
                         </div>
