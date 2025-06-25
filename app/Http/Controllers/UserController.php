@@ -108,4 +108,60 @@ class UserController extends Controller
     {
         return view('user.account-address-add');
     }
+
+    public function account_address_store(Request $request)
+    {
+        $address = new Address();
+        
+        $address->user_id = Auth::user()->id;
+        $address->name = $request->name;
+        $address->phone = $request->phone;
+        $address->zip = $request->zip;
+        $address->country = 'Ukraine';
+        $address->state = $request->state;
+        $address->city = $request->city;
+        $address->address = $request->address;
+        $address->locality = $request->locality;
+        $address->landmark = $request->landmark;
+        if($request->isdefault)
+        {
+            $address->isdefault = 1;
+        }else{
+            $address->isdefault = 0;
+        }
+        $address->save();
+
+        return redirect()->route('user.account.address');
+    }
+
+    public function account_address_edit($id)
+    {
+        $address = Address::find($id);        
+        return view('user.account-address-edit',compact('address'));
+    }
+
+    public function account_address_update(Request $request)
+    {
+        $address = Address::find($request->id);
+
+        $address->user_id = Auth::user()->id;
+        $address->name = $request->name;
+        $address->phone = $request->phone;
+        $address->zip = $request->zip;
+        $address->country = 'Ukraine';
+        $address->state = $request->state;
+        $address->city = $request->city;
+        $address->address = $request->address;
+        $address->locality = $request->locality;
+        $address->landmark = $request->landmark;
+        if($request->isdefault)
+        {
+            $address->isdefault = 1;
+        }else{
+            $address->isdefault = 0;
+        }
+        $address->save();
+        
+        return redirect()->route('user.account.address');
+    }
 }

@@ -17,7 +17,7 @@
                       <p class="notice">The following addresses will be used on the checkout page by default.</p>
                   </div>
                   <div class="col-6 text-right">
-                      <a href="#" class="btn btn-sm btn-danger">Back</a>
+                      <a href="{{route('user.account.address')}}" class="btn btn-sm btn-danger">Back</a>
                   </div>
               </div>
 
@@ -28,9 +28,11 @@
                               <h5>Add New Address</h5>
                           </div>
                           <div class="card-body">
-                              <form action="{{route('user.account.address.store')}}" method="POST">
-                                @csrf  
-                                    <div class="row">                                      
+                              <form action="{{route('user.account.address.update')}}" method="POST">
+                                @csrf
+                                @method('PUT')  
+                                    <div class="row">
+                                      <input type="hidden" name="id" value="{{$address->id}}" />                                        
                                       <div class="col-md-6">
                                           <div class="form-floating my-3">
                                               <input type="text" class="form-control" name="name" value="{{ Auth::user()->name }}">
@@ -47,49 +49,49 @@
                                       </div>
                                       <div class="col-md-4">
                                           <div class="form-floating my-3">
-                                              <input type="text" class="form-control" name="zip" value="">
+                                              <input type="text" class="form-control" name="zip" value="{{$address->zip}}">
                                               <label for="zip">Pincode *</label>
                                               <span class="text-danger"></span>
                                           </div>
                                       </div>                        
                                       <div class="col-md-4">
                                           <div class="form-floating mt-3 mb-3">
-                                              <input type="text" class="form-control" name="state" value="">
+                                              <input type="text" class="form-control" name="state" value="{{$address->state}}">
                                               <label for="state">State *</label>
                                               <span class="text-danger"></span>
                                           </div>                            
                                       </div>
                                       <div class="col-md-4">
                                           <div class="form-floating my-3">
-                                              <input type="text" class="form-control" name="city" value="">
+                                              <input type="text" class="form-control" name="city" value="{{$address->city}}">
                                               <label for="city">Town / City *</label>
                                               <span class="text-danger"></span>
                                           </div>
                                       </div>
                                       <div class="col-md-6">
                                           <div class="form-floating my-3">
-                                              <input type="text" class="form-control" name="address" value="">
+                                              <input type="text" class="form-control" name="address" value="{{$address->address}}">
                                               <label for="address">House no, Building Name *</label>
                                               <span class="text-danger"></span>
                                           </div>
                                       </div>
                                       <div class="col-md-6">
                                           <div class="form-floating my-3">
-                                              <input type="text" class="form-control" name="locality" value="">
+                                              <input type="text" class="form-control" name="locality" value="{{$address->locality}}">
                                               <label for="locality">Road Name, Area, Colony *</label>
                                               <span class="text-danger"></span>
                                           </div>
                                       </div>    
                                       <div class="col-md-12">
                                           <div class="form-floating my-3">
-                                              <input type="text" class="form-control" name="landmark" value="">
+                                              <input type="text" class="form-control" name="landmark" value="{{$address->landmark}}">
                                               <label for="landmark">Landmark *</label>
                                               <span class="text-danger"></span>
                                           </div>
                                       </div>  
                                       <div class="col-md-6">
                                           <div class="form-check">
-                                              <input class="form-check-input" type="checkbox" value="1" id="isdefault" name="isdefault">
+                                              <input class="form-check-input" type="checkbox" id="isdefault" name="isdefault" {{ ( $address->isdefault == 1 ) ? 'checked' : ''}}>
                                               <label class="form-check-label" for="isdefault">
                                                   Make as Default address
                                               </label>

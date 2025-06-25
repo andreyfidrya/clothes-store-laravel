@@ -14,7 +14,7 @@
           <div class="page-content my-account__address">
             <div class="row">
               <div class="col-6">
-                <p class="notice">The following addresses will be used on the checkout page by default.</p>
+                <p class="notice">Select the shipping address for your orders by making it a default address. You should have only one default address.</p>
               </div>
               <div class="col-6 text-right">
                 <a href="{{route('user.account.address.add')}}" class="btn btn-sm btn-info">Add New</a>
@@ -26,7 +26,7 @@
                 <div class="my-account__address-item col-md-6">
                     <div class="my-account__address-item__title">
                     <h5>{{$address->name}}<i class="fa fa-check-circle text-success"></i></h5>
-                    <a href="#">Edit</a>
+                    <a href="{{route('user.account.address.edit', ['id'=>$address->id])}}">Edit</a>
                     </div>
                     <div class="my-account__address-item__detail">
                     <p>{{$address->address}}</p>
