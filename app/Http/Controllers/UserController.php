@@ -8,6 +8,7 @@ use App\Models\Address;
 Use App\Models\OrderItem;
 Use App\Models\Transaction;
 use Carbon\Carbon;
+use Surfsidemedia\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
@@ -163,5 +164,11 @@ class UserController extends Controller
         $address->save();
         
         return redirect()->route('user.account.address');
+    }
+
+    public function account_wishlist()
+    {
+        $items = Cart::instance('wishlist')->content();
+        return view('user.wishlist', compact('items'));
     }
 }
